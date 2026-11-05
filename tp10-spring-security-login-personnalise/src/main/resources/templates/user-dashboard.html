@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace utilisateur | TP 10</title><link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"></head>
+<body>
+<header class="site-header"><div class="container header-content"><a class="brand" th:href="@{/home}"><span class="brand-logo">S</span><span>Spring Security <small>TP 10</small></span></a><form th:action="@{/logout}" method="post"><button class="btn btn-outline btn-small" type="submit">Déconnexion</button></form></div></header>
+<main class="container page-content"><nav class="breadcrumb"><a th:href="@{/home}">Accueil</a><span>/</span>Espace utilisateur</nav>
+<div class="eyebrow blue">✓ ACCÈS USER AUTORISÉ</div><h1>Tableau de bord <span class="text-primary">utilisateur</span></h1>
+<p class="lead">Bonjour <strong th:text="${username}">user</strong>, votre authentification a réussi.</p>
+<section class="card-grid"><article class="info-card"><p class="section-kicker">AUTHENTIFICATION</p><h2>Session active</h2><p>Spring Security a contrôlé votre identité et vos permissions.</p><div class="key-value"><span>Compte connecté</span><strong th:text="${username}">user</strong></div><div class="key-value"><span>Accès requis</span><code>USER ou ADMIN</code></div></article>
+<article class="info-card"><p class="section-kicker">AUTORISATION</p><h2>Tester les restrictions</h2><p>Essayez l'espace administrateur. Avec le compte <code>user</code>, l'accès sera refusé (HTTP 403).</p><a class="btn btn-soft" th:href="@{/admin/dashboard}">Tester l'accès administrateur →</a></article></section>
+<a class="back-link" th:href="@{/home}">← Retour à l'accueil</a></main>
+<footer class="site-footer">TP 10 · Espaces sécurisés</footer></body></html>

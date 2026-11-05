@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accueil | TP 10 Spring Security</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-content">
+    <a class="brand" th:href="@{/home}"><span class="brand-logo">S</span><span>Spring Security <small>TP 10</small></span></a>
+    <form th:action="@{/logout}" action="/logout" method="post"><button class="btn btn-outline btn-small" type="submit">Déconnexion</button></form>
+</div></header>
+<main class="container page-content">
+    <nav class="breadcrumb">Application <span>/</span> Accueil</nav>
+    <div class="eyebrow"><span class="status-dot"></span> AUTHENTIFICATION RÉUSSIE</div>
+    <h1>Bienvenue <span class="text-primary" th:text="${username}">utilisateur</span> !</h1>
+    <p class="lead">Votre session est active. Choisissez l'espace auquel vous souhaitez accéder.</p>
+    <section class="card-grid" aria-label="Espaces sécurisés">
+        <article class="info-card"><div class="tile-icon">U</div><p class="section-kicker">RÔLE USER OU ADMIN</p><h2>Espace utilisateur</h2><p>Consultez le tableau de bord réservé aux comptes autorisés.</p><a class="btn btn-primary" th:href="@{/user/dashboard}" href="/user/dashboard">Accéder à l'espace utilisateur <span>→</span></a></article>
+        <article class="info-card"><div class="tile-icon violet">A</div><p class="section-kicker">RÔLE ADMIN UNIQUEMENT</p><h2>Espace administrateur</h2><p>Zone protégée par le rôle ADMIN. Les autres comptes reçoivent une erreur 403.</p><a class="btn btn-soft" th:href="@{/admin/dashboard}" href="/admin/dashboard">Accéder à l'espace administrateur <span>→</span></a></article>
+    </section>
+    <div class="callout"><strong>Comment ça marche ?</strong> Votre formulaire envoie un POST vers <code>/authenticate</code>. Spring Security vérifie les identifiants, démarre la session et vous redirige vers <code>/home</code>.</div>
+</main>
+<footer class="site-footer">TP 10 · Contrôle d'accès par rôles</footer>
+</body>
+</html>

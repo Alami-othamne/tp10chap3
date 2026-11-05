@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>403 - Accès refusé | TP 10</title><link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"></head>
+<body><header class="site-header"><div class="container header-content"><a class="brand" th:href="@{/home}"><span class="brand-logo">S</span><span>Spring Security <small>TP 10</small></span></a></div></header>
+<main class="error-layout container"><p class="error-number">403</p><h1>Accès refusé</h1><p>Votre compte ne dispose pas du rôle nécessaire pour consulter cette page.</p><a class="btn btn-primary" th:href="@{/home}">Retour à l'accueil →</a></main>
+<footer class="site-footer">TP 10 · Autorisations Spring Security</footer></body></html>

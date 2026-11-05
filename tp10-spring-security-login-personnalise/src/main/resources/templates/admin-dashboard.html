@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace administrateur | TP 10</title><link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css"></head>
+<body><header class="site-header"><div class="container header-content"><a class="brand" th:href="@{/home}"><span class="brand-logo">S</span><span>Spring Security <small>TP 10</small></span></a><form th:action="@{/logout}" method="post"><button class="btn btn-outline btn-small" type="submit">Déconnexion</button></form></div></header>
+<main class="container page-content"><nav class="breadcrumb"><a th:href="@{/home}">Accueil</a><span>/</span>Espace administrateur</nav>
+<div class="eyebrow violet">✓ ACCÈS ADMIN AUTORISÉ</div><h1>Tableau de bord <span class="text-primary">administrateur</span></h1>
+<p class="lead">Bienvenue <strong th:text="${username}">admin</strong>, vous disposez des autorisations administrateur.</p>
+<section class="card-grid"><article class="info-card"><p class="section-kicker">AUTORISATION</p><h2>Permissions élevées</h2><p>Cette page nécessite impérativement le rôle ADMIN. Les autres utilisateurs ne peuvent pas y accéder.</p><div class="key-value"><span>Compte connecté</span><strong th:text="${username}">admin</strong></div><div class="key-value"><span>Rôle requis</span><code>ROLE_ADMIN</code></div></article>
+<article class="info-card"><p class="section-kicker">ACCÈS AUTORISÉS</p><h2>Deux espaces accessibles</h2><p>Grâce à <code>hasAnyRole("USER", "ADMIN")</code>, le compte admin peut aussi consulter le tableau de bord utilisateur.</p><a class="btn btn-soft" th:href="@{/user/dashboard}">Ouvrir l'espace utilisateur →</a></article></section>
+<a class="back-link" th:href="@{/home}">← Retour à l'accueil</a></main><footer class="site-footer">TP 10 · Espaces sécurisés</footer></body></html>

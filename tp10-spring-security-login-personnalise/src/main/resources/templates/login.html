@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion | TP 10 Spring Security</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+</head>
+<body class="auth-page">
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" th:href="@{/login}"><span class="brand-logo">S</span><span>Spring Security <small>TP 10</small></span></a>
+            <span class="header-note">Authentification sécurisée</span>
+        </div>
+    </header>
+
+    <main class="auth-layout container">
+        <section class="auth-intro" aria-label="Présentation">
+            <div class="eyebrow"><span class="status-dot"></span> TP 10 · Spring Boot et Thymeleaf</div>
+            <h1>Votre espace.<br><span class="text-primary">Vos accès.</span><br>En toute simplicité.</h1>
+            <p>Un formulaire sur mesure, un contrôle des rôles côté serveur et un parcours de connexion clair.</p>
+            <div class="features">
+                <div><span class="feature-symbol">✓</span><span>Authentification Spring Security</span></div>
+                <div><span class="feature-symbol">✓</span><span>Autorisations USER et ADMIN</span></div>
+                <div><span class="feature-symbol">✓</span><span>Session et protection CSRF</span></div>
+            </div>
+        </section>
+
+        <section class="auth-card" aria-labelledby="login-title">
+            <div class="auth-symbol">↳</div>
+            <p class="section-kicker">ACCÈS À L'APPLICATION</p>
+            <h2 id="login-title">Bon retour !</h2>
+            <p class="muted">Saisissez vos identifiants pour continuer.</p>
+
+            <div class="alert alert-error" role="alert" th:if="${param.error}">Identifiants incorrects, veuillez réessayer.</div>
+            <div class="alert alert-success" role="status" th:if="${param.logout}">Vous êtes déconnecté avec succès.</div>
+
+            <!-- th:action déclenche l'ajout automatique d'un champ CSRF caché par Thymeleaf/Spring Security. -->
+            <form th:action="@{/authenticate}" action="/authenticate" method="post">
+                <label for="username">Nom d'utilisateur</label>
+                <input id="username" type="text" name="username" placeholder="Ex. user" autocomplete="username" required autofocus>
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" name="password" placeholder="Votre mot de passe" autocomplete="current-password" required>
+                <button type="submit" class="btn btn-primary btn-full">Se connecter <span aria-hidden="true">→</span></button>
+            </form>
+            <div class="demo-accounts"><strong>Comptes de démonstration</strong><span>USER : <code>user / 1111</code></span><span>ADMIN : <code>admin / 1234</code></span></div>
+            <p class="fineprint">Identifiants destinés uniquement à ce TP pédagogique.</p>
+        </section>
+    </main>
+    <footer class="site-footer">TP 10 · Formulaire de connexion personnalisé · Spring Security</footer>
+</body>
+</html>
